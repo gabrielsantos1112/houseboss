@@ -1,4 +1,4 @@
-package br.com.housebossinterno.houseboss.dtos;
+package br.com.housebossinterno.houseboss.dtos.clientedtos;
 
 import jakarta.validation.constraints.NotBlank;
 

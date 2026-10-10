@@ -1,7 +1,7 @@
 package br.com.housebossinterno.houseboss.service;
 
-import br.com.housebossinterno.houseboss.dtos.ClienteRequest;
-import br.com.housebossinterno.houseboss.dtos.ClienteResponse;
+import br.com.housebossinterno.houseboss.dtos.clientedtos.ClienteRequest;
+import br.com.housebossinterno.houseboss.dtos.clientedtos.ClienteResponse;
 import br.com.housebossinterno.houseboss.entity.ClienteEntity;
 import br.com.housebossinterno.houseboss.exception.BadRequestException;
 import br.com.housebossinterno.houseboss.exception.ResourceNotFoundException;
