@@ -45,7 +45,7 @@ public class ClienteController {
 
     @PutMapping("/{identificador}")
     public ResponseEntity<ClienteResponse> atualizarClientePorIdentificador
-            (@PathVariable Long identificador, @RequestBody ClienteRequest clienteRequest) {
+            (@PathVariable Long identificador,@Valid @RequestBody ClienteRequest clienteRequest) {
         ClienteResponse clienteResponse = clienteService.atualizarClientePorIdentificador(identificador, clienteRequest);
         return ResponseEntity.status(HttpStatus.OK).body(clienteResponse);
     }

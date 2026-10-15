@@ -2,7 +2,10 @@ package br.com.housebossinterno.houseboss.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
@@ -23,7 +26,17 @@ public class ControllerExceptionHandler {
     public ResponseEntity<Map<String, String>> resourceNotFoundExceptions(ResourceNotFoundException exception) {
         Map<String, String> response = new HashMap<>();
         response.put("Erro: ", exception.getMessage());
-        response.put("Mensagem: ", "Por favor, insira uma informação válida! ");
+        response.put("Mensagem: ", "Recurso não encontrado! Cheque as informações e tente novamente! ");
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> handleArgumentNotValidException(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach(error ->
+                errors.put(((FieldError) error).getField(), error.getDefaultMessage()));
+        return errors;
+    }
 }
+

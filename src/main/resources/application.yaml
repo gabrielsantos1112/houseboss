@@ -19,4 +19,8 @@ spring:
   flyway:
     enabled: true
 
+houseboss:
+  security:
+    secret: fq0zoCh8FgZhn8Q9tBBlIon5pps78be+COQy4NPN67yPEwhPceDsa9n5Ud4gjHDo4BS6vtoAe2YU4iYILWBwRkvN+oXjNVM6ofyDQDHBV2ZgKuc+ZzIA2N6WICkvkbbXfOqyotla9/oN9LofjQ34u5eSxi/UtgZ/juh2rcZrUDYLdmKM47MoUxCPHjxXjXShGuzHbd8Cel0E7gkMjhC4T5g9lRHe2VbTrnculY7jMRCdmvOoBKlsv0YiEGLYVT686pOY964ZgETwWKMrfjZJ7YRP0EjdHNBMY7xIclPBMsH9dpqdeY8ZuHORH5MHD3QRbaBNhwoGXPH/7N14G1iLGGz7
+
 

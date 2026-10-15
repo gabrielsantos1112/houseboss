@@ -1,0 +1,7 @@
+package br.com.housebossinterno.houseboss.dtos.funcionariodtos;
+
+import jakarta.validation.constraints.NotBlank;
+
+public record LoginRequest(@NotBlank(message = "Email é obrigatório! ") String email,
+                           @NotBlank(message = "Senha é obrigatória! ") String senha) {
+}
