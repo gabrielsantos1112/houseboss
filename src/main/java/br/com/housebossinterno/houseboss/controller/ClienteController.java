@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/clientes")
+@RequestMapping("/v1/clientes")
 @RequiredArgsConstructor
 @Validated
 public class ClienteController {

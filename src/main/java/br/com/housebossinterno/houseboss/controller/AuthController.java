@@ -5,17 +5,12 @@ import br.com.housebossinterno.houseboss.dtos.funcionariodtos.FuncionarioRequest
 import br.com.housebossinterno.houseboss.dtos.funcionariodtos.FuncionarioResponse;
 import br.com.housebossinterno.houseboss.dtos.funcionariodtos.LoginRequest;
 import br.com.housebossinterno.houseboss.dtos.funcionariodtos.LoginResponse;
-import br.com.housebossinterno.houseboss.entity.FuncionarioEntity;
-import br.com.housebossinterno.houseboss.exception.BadRequestException;
 import br.com.housebossinterno.houseboss.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/v1/auth")
 @RequiredArgsConstructor
 @Validated
 public class AuthController {
