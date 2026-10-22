@@ -1,10 +1,13 @@
 package br.com.housebossinterno.houseboss.service;
 
+import br.com.housebossinterno.houseboss.dtos.atendimentodtos.AtendimentoClienteResponse;
 import br.com.housebossinterno.houseboss.dtos.clientedtos.ClienteRequest;
 import br.com.housebossinterno.houseboss.dtos.clientedtos.ClienteResponse;
+import br.com.housebossinterno.houseboss.entity.AtendimentoEntity;
 import br.com.housebossinterno.houseboss.entity.ClienteEntity;
 import br.com.housebossinterno.houseboss.exception.BadRequestException;
 import br.com.housebossinterno.houseboss.exception.ResourceNotFoundException;
+import br.com.housebossinterno.houseboss.mapper.AtendimentoMapper;
 import br.com.housebossinterno.houseboss.mapper.ClienteMapper;
 import br.com.housebossinterno.houseboss.repository.ClienteRepository;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +46,17 @@ public class ClienteService {
                 () -> new ResourceNotFoundException("Identificador de cliente não encontrado! "));
 
         return ClienteMapper.paraClienteResponse(clienteEntity);
+    }
+
+    public List<AtendimentoClienteResponse> buscarAtendimentosDeClientePorId(Long identificador) {
+
+        ClienteEntity clienteEntity = clienteRepository.findById(identificador)
+                .orElseThrow(() -> new ResourceNotFoundException("Identificador de cliente não encontrado"));
+
+        List<AtendimentoEntity> atendimentosCliente = clienteEntity.getAtendimentosCliente();
+
+        return AtendimentoMapper.paraAtendimentosDeCliente(atendimentosCliente);
+
     }
 
     public ClienteResponse atualizarClientePorIdentificador(Long identificador, ClienteRequest request) {

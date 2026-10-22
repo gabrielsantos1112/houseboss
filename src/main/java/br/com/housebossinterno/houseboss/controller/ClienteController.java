@@ -1,5 +1,6 @@
 package br.com.housebossinterno.houseboss.controller;
 
+import br.com.housebossinterno.houseboss.dtos.atendimentodtos.AtendimentoClienteResponse;
 import br.com.housebossinterno.houseboss.dtos.clientedtos.ClienteRequest;
 import br.com.housebossinterno.houseboss.dtos.clientedtos.ClienteResponse;
 import br.com.housebossinterno.houseboss.service.ClienteService;
@@ -43,6 +44,14 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.OK).body(clienteResponse);
     }
 
+    @GetMapping("/{identificador}/atendimentos")
+    public ResponseEntity<List<AtendimentoClienteResponse>> buscarAtendimentosDeClientePorId
+            (@PathVariable Long identificador) {
+        List<AtendimentoClienteResponse> atendimentoClienteResponses =
+                clienteService.buscarAtendimentosDeClientePorId(identificador);
+        return ResponseEntity.status(HttpStatus.OK).body(atendimentoClienteResponses);
+    }
+
     @PutMapping("/{identificador}")
     public ResponseEntity<ClienteResponse> atualizarClientePorIdentificador
             (@PathVariable Long identificador,@Valid @RequestBody ClienteRequest clienteRequest) {
@@ -55,6 +64,4 @@ public class ClienteController {
         clienteService.excluirClientePorIdentificador(identificador);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
-
 }

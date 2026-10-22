@@ -27,8 +27,6 @@ import java.util.Map;
 public class AuthController {
 
     private final AuthService authService;
-    private final AuthenticationManager authenticationManager;
-    private final TokenService tokenService;
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, Object>> registrarFuncionario

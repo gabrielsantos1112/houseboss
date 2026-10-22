@@ -1,5 +1,6 @@
 package br.com.housebossinterno.houseboss.mapper;
 
+import br.com.housebossinterno.houseboss.dtos.atendimentodtos.AtendimentoClienteResponse;
 import br.com.housebossinterno.houseboss.dtos.atendimentodtos.AtendimentoRequest;
 import br.com.housebossinterno.houseboss.dtos.atendimentodtos.AtendimentoResponse;
 import br.com.housebossinterno.houseboss.entity.AtendimentoEntity;
@@ -8,7 +9,6 @@ import br.com.housebossinterno.houseboss.entity.FuncionarioEntity;
 import lombok.experimental.UtilityClass;
 import org.springframework.data.domain.Page;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @UtilityClass
@@ -54,5 +54,18 @@ public class AtendimentoMapper {
                 atendimento.getFuncionario().getId(),
                 atendimento.getFuncionario().getNome()
         ));
+    }
+
+    public static List<AtendimentoClienteResponse> paraAtendimentosDeCliente(List<AtendimentoEntity> atendimentos) {
+        return atendimentos.stream().map(atendimento -> new AtendimentoClienteResponse(
+                atendimento.getId(),
+                atendimento.getDescricaoAtendimento(),
+                atendimento.getDataHorario(),
+                atendimento.getTipoPagamento(),
+                atendimento.getStatusPagamento(),
+                atendimento.getValorAtendimento(),
+                atendimento.getFuncionario().getId(),
+                atendimento.getFuncionario().getNome()
+        )).toList();
     }
 }
