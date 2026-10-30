@@ -65,7 +65,7 @@ public class AtendimentoService {
             (Long identificador, AtendimentoRequestPatch atendimento) {
 
         AtendimentoEntity atendimentoEntity = atendimentoRepository.findById(identificador).orElseThrow
-                (() -> new ResourceNotFoundException("Identificador de cliente não encontrado! "));
+                (() -> new ResourceNotFoundException("Identificador de atendimento não encontrado! "));
 
         atendimentoEntity.setStatusPagamento(atendimento.status());
         atendimentoEntity.setValorAtendimento(atendimento.preco());
