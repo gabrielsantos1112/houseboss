@@ -73,7 +73,7 @@ public class AtendimentoController {
     }
 
     @DeleteMapping("/{identificador}")
-    public ResponseEntity<Void> deletarAtendimentoPorIdentificador(Long identificador) {
+    public ResponseEntity<Void> deletarAtendimentoPorIdentificador(@PathVariable Long identificador) {
         atendimentoService.deletarAtendimentoPorId(identificador);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
